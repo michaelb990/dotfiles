@@ -1,4 +1,4 @@
-for f in .vimrc .bash_profile
+for f in .vimrc .bashrc
 do
   echo placing $f
   cp ~/dotfiles/$f ~/

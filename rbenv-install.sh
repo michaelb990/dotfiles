@@ -1,7 +1,7 @@
 cd ~
 git clone git://github.com/sstephenson/rbenv.git .rbenv
-echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bash_profile
-echo 'eval "$(rbenv init -)"' >> ~/.bash_profile
+echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
+echo 'eval "$(rbenv init -)"' >> ~/.bashrc
 git clone git://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
-source ~/.bash_profile
+source ~/.bashrc
 echo rbenv installed

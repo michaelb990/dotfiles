@@ -1,0 +1,43 @@
+[user]
+  name = <%= print("Your Name: "); STDOUT.flush; STDIN.gets.chomp %>
+  email = <%= print("Your Email: "); STDOUT.flush; STDIN.gets.chomp %>
+
+[color]
+  diff = true
+  status = true
+  branch = true
+  interactive = true
+  ui = true
+
+[core]
+  autocrlf = false
+  excludesfile = <%= ENV['HOME'] %>/.gitignore
+  quotepath = false
+  trustctime = false
+
+[alias]
+  st = status -sb
+  di = diff
+  poh = push origin HEAD
+  wdiff = diff --word-diff
+  co = checkout
+  ci = commit
+  br = branch
+  sta = stash
+  sub = submodule
+  pre = pull --rebase
+  lg = log --graph --pretty=format:'%Cred%h%Creset %C(cyan)%an%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+  tags = tag -l
+
+[merge]
+  tool = opendiff
+
+[apply]
+  whitespace = nowarn
+
+[format]
+  pretty = %C(yellow)%h%Creset %s %C(red)(%cr)%Creset
+
+[github]
+  user = <%= print("GitHub Username: "); STDOUT.flush; STDIN.gets.chomp %>
+

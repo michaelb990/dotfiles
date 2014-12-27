@@ -1,6 +1,6 @@
 =begin
 Rakefile used to install dot files into home directory.
-  shamelessly copied from https://github.com/cdzombak/dotfiles/blob/osx/Rakefile
+  from cdzombak/dotfiles
   edited to fit my setup
 =end
 

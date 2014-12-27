@@ -1,6 +1,6 @@
 source ~/dotfiles/antigen/antigen.zsh
 
-# Source config details from all *.zsh files in the config/<topic> directories
+# Source config details from all *.zsh files in the config directory
 for file ($HOME/dotfiles/config/*.zsh) source $file
 
 # Source local details from a .localrc file outside of the dotfiles project

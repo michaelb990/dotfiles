@@ -13,12 +13,16 @@ fi
 antigen use oh-my-zsh
 
 # Bundles from the default repo (robbyrussell's oh-my-zsh).
-antigen bundle git
-antigen bundle command-not-found
-antigen bundle rbenv
-antigen bundle bundler
-antigen bundle brew
-antigen bundle gem
+antigen bundles <<EOBUNDLES
+
+git
+command-not-found
+rbenv
+bundler
+brew
+gem
+
+EOBUNDLES
 
 # Syntax highlighting bundle.
 antigen bundle zsh-users/zsh-syntax-highlighting

@@ -11,7 +11,6 @@ desc "install the dot files into user's home directory"
 task :install do
   replace_all = false
   Dir['*'].each do |file|
-    puts "checking #{file}..."
     next if %w[Rakefile README.rdoc README.md LICENSE].include? file
     next if File.directory?(file)
     

@@ -1,5 +1,8 @@
 source ~/dotfiles/antigen/antigen.zsh
 
+# Load the oh-my-zsh's library.
+antigen use oh-my-zsh
+
 # Source config details from all *.zsh files in the config directory
 for file ($HOME/dotfiles/config/*.zsh) source $file
 
@@ -8,9 +11,6 @@ if [[ -a ~/.localrc ]]
 then
   source ~/.localrc
 fi
-
-# Load the oh-my-zsh's library.
-antigen use oh-my-zsh
 
 # Bundles from the default repo (robbyrussell's oh-my-zsh).
 antigen bundles <<EOBUNDLES

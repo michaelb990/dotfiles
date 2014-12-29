@@ -19,4 +19,5 @@ a collection of dotfiles that I have found useful.
 * cdzombak/dotfiles
 * holman/dotfiles
 * ryanb/dotfiles
+* http://justinlilly.com/dotfiles/zsh.html
 * ... will add more as I find them.

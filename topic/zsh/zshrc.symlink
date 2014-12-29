@@ -3,8 +3,11 @@ source ~/dotfiles/antigen/antigen.zsh
 # Load the oh-my-zsh's library.
 antigen use oh-my-zsh
 
+# Set DOTFILES_HOME var for use in other scripts
+export DOTFILES_HOME="$HOME/dotfiles"
+
 # Source config details from all *.zsh files in the config directory
-for file ($HOME/dotfiles/config/*.zsh) source $file
+for file ($DOTFILES_HOME/topic/*/*.zsh) source $file
 
 # Source local details from a .localrc file outside of the dotfiles project
 if [[ -a ~/.localrc ]]
@@ -28,7 +31,13 @@ EOBUNDLES
 antigen bundle zsh-users/zsh-syntax-highlighting
 
 # Load the theme.
-antigen theme robbyrussell
+# i like this one, doesn't show path at all - antigen theme dieter
+# good, but prints full path and tells ruby version - antigen theme gallois
+# ehh - antigen theme nicoulaj
+# antigen theme robbyrussell
+# antigen theme anowell/dotfiles files/anowell
+# antigen theme sorin
+antigen theme sunrise
 
 # Tell antigen that you're done.
 antigen apply

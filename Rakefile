@@ -55,6 +55,6 @@ def link_file(file)
     end
   else
     puts "linking ~/.#{filename}"
-    system %Q{ln -s "$PWD/#{file}" "$HOME/.#{File.basename(file).sub('.symlink', '')}"}
+    system %Q{ln -s "$PWD/#{file}" "$HOME/.#{filename}"}
   end
 end

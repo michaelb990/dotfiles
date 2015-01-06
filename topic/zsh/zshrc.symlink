@@ -37,7 +37,7 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 # good, but prints full path and tells ruby version - antigen theme gallois
 # ehh - antigen theme nicoulaj
 # antigen theme robbyrussell
-# antigen theme anowell/dotfiles files/anowell
+# full path, like the time - antigen theme anowell/dotfiles files/anowell
 # antigen theme sorin
 antigen theme sunrise
 

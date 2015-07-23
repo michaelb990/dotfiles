@@ -1,3 +1,7 @@
+# Local Variables:
+# mode: sh
+# End:
+
 # Set DOTFILES_HOME var for use in other scripts
 export DOTFILES_HOME="$HOME/dotfiles"
 
@@ -7,13 +11,11 @@ source $DOTFILES_HOME/antigen/antigen.zsh
 # Load the oh-my-zsh's library.
 antigen use oh-my-zsh
 
-
 # Source config details from all *.zsh files in the topic directories
 for file ($DOTFILES_HOME/topic/*/*.zsh) source $file
 
 # Source local details from a .localrc file outside of the dotfiles project
-if [[ -a ~/.localrc ]]
-then
+if [[ -a ~/.localrc ]]; then
   source ~/.localrc
 fi
 
@@ -26,6 +28,7 @@ rbenv
 bundler
 brew
 gem
+rake
 
 EOBUNDLES
 
@@ -44,3 +47,19 @@ antigen theme sunrise
 # Tell antigen that you're done.
 antigen apply
 
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
+
+# Init gvm
+[[ -s "/Users/michaelbrown/.gvm/scripts/gvm" ]] && source "/Users/michaelbrown/.gvm/scripts/gvm"
+
+# Alias emacs shortcuts
+alias e="emacsclient -c"
+alias ed="emacs --daemon"
+export EDITOR=emacs
+
+
+# Alias kitchen shortcuts
+alias kdc="kitchen destroy -c && kitchen converge -c"
+alias kc="kitchen converge -c"

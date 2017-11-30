@@ -57,12 +57,6 @@ export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 # Init gvm
 [[ -s "/Users/michaelbrown/.gvm/scripts/gvm" ]] && source "/Users/michaelbrown/.gvm/scripts/gvm"
 
-# Alias emacs shortcuts
-alias e="emacsclient -c"
-alias ed="emacs --daemon"
-export EDITOR=emacs
-
-
 # Alias kitchen shortcuts
 alias kdc="kitchen destroy -c 4 && kitchen converge -c 4"
 alias kc="kitchen converge -c 4"
@@ -83,3 +77,7 @@ export PATH="/usr/local/sbin:$PATH"
 
 # Proxy fun
 alias bastion-proxy='ssh -D 26499 -f -C -q -N fedramp.bastion.socrata.net'
+
+# Setup local scripts and editor
+export PATH="$HOME/dotfiles/bin:$PATH"
+export EDITOR=~/dotfiles/bin/edit

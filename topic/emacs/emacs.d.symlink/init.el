@@ -41,9 +41,6 @@
 (use-package f
   :ensure t)
 
-(setq-default indent-tabs-mode nil)
-(setq tab-width 2)
-
 (fset 'yes-or-no-p 'y-or-n-p)
 
 (setq scroll-conservatively 10000
@@ -65,7 +62,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages (quote (f s dash use-package))))
+ '(package-selected-packages (quote (company f s dash use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -87,8 +84,6 @@
 (require 'mouse)
 (xterm-mouse-mode t)
 (defun track-mouse (e))
-
-(global-company-mode)
 
 (add-hook
  'elixir-mode-hook
@@ -115,3 +110,39 @@
 (add-to-list 'ido-ignore-buffers "*jde-log")
 (add-to-list 'ido-ignore-buffers "magit-*")
 (add-to-list 'ido-ignore-buffers "^[tT][aA][gG][sS]$")
+
+(setq backup-directory-alist
+      `(("." . ,(expand-file-name
+                 (ha/emacs-subdirectory "backups")))))
+(setq vc-make-backup-files t)
+
+(defun save-all ()
+  "Save all dirty buffers without asking for confirmation."
+  (interactive)
+  (save-some-buffers t))
+
+(add-hook 'focus-out-hook 'save-all)
+
+(use-package company
+  :ensure t
+  :init
+  (setq company-dabbrev-ignore-case t
+        company-show-numbers t)
+  (add-hook 'after-init-hook 'global-company-mode)
+  :config
+  (add-to-list 'company-backends 'company-math-symbols-unicode)
+  :bind ("C-:" . company-complete)  ; In case I don't want to wait
+  :diminish company-mode)
+
+(setq-default indent-tabs-mode nil)
+(setq tab-width 2)
+
+;; define function to shutdown emacs server instance
+(defun server-shutdown ()
+  "Save buffers, Quit, and Shutdown (kill) server"
+  (interactive)
+  (save-some-buffers)
+  (kill-emacs)
+  )
+
+

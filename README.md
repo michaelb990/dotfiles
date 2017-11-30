@@ -20,4 +20,5 @@ a collection of dotfiles that I have found useful.
 * holman/dotfiles
 * ryanb/dotfiles
 * http://justinlilly.com/dotfiles/zsh.html
+* howardabrams/dot-files, esp for the [emacs config](https://github.com/howardabrams/dot-files/blob/master/emacs.org)
 * ... will add more as I find them.

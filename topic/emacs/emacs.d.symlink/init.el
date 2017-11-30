@@ -41,6 +41,12 @@
 (use-package f
   :ensure t)
 
+(use-package auto-complete
+  :ensure t)
+
+(use-package ac-math
+  :ensure t)
+
 (fset 'yes-or-no-p 'y-or-n-p)
 
 (setq scroll-conservatively 10000
@@ -57,18 +63,8 @@
     (horizontal-scroll-bar-mode -1))
   (scroll-bar-mode -1))            ;; Scrollbars are waste screen estate
 
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages (quote (company f s dash use-package))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+(setq custom-file "~/.emacs.d/custom.el")
+(load custom-file)
 
 ;; toml mode
 (add-hook 'toml-mode-hook
@@ -130,7 +126,7 @@
         company-show-numbers t)
   (add-hook 'after-init-hook 'global-company-mode)
   :config
-  (add-to-list 'company-backends 'company-math-symbols-unicode)
+;;  (add-to-list 'company-backends 'company-math-symbols-unicode)
   :bind ("C-:" . company-complete)  ; In case I don't want to wait
   :diminish company-mode)
 
@@ -144,5 +140,4 @@
   (save-some-buffers)
   (kill-emacs)
   )
-
 

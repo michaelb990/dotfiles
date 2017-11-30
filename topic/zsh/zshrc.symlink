@@ -55,7 +55,7 @@ export PATH="/usr/local/heroku/bin:$PATH"
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 
 # Init gvm
-[[ -s "/Users/michaelbrown/.gvm/scripts/gvm" ]] && source "/Users/michaelbrown/.gvm/scripts/gvm"
+[[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/michaelbrown/.gvm/scripts/gvm"
 
 # Alias kitchen shortcuts
 alias kdc="kitchen destroy -c 4 && kitchen converge -c 4"

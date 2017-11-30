@@ -72,3 +72,46 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+;; toml mode
+(add-hook 'toml-mode-hook
+          '(lambda()
+             (setq tab-width 2)))
+
+;; no-easy-keys :)
+(load-file "~/.emacs.d/no-easy-keys/no-easy-keys.el")
+(require 'no-easy-keys)
+(no-easy-keys 1)
+
+;; enable mouse in emacs :O
+(require 'mouse)
+(xterm-mouse-mode t)
+(defun track-mouse (e))
+
+(global-company-mode)
+
+(add-hook
+ 'elixir-mode-hook
+ (lambda ()
+   (alchemist-mode t)
+   (require 'flycheck-mix)
+   (flycheck-mix-setup)))
+
+;; enable ido - interactively do things, buffer switching in particular
+(require 'ido)
+(ido-mode t)
+
+;; suppress ido prompt when creating new buffer
+(setq ido-create-new-buffer 'always)
+
+;; ignore some buffers
+(add-to-list 'ido-ignore-buffers "^ ")
+(add-to-list 'ido-ignore-buffers "*Messages*")
+(add-to-list 'ido-ignore-buffers "*ECB")
+(add-to-list 'ido-ignore-buffers "*Buffer")
+(add-to-list 'ido-ignore-buffers "*Completions")
+(add-to-list 'ido-ignore-buffers "*ftp ")
+(add-to-list 'ido-ignore-buffers "*bsh")
+(add-to-list 'ido-ignore-buffers "*jde-log")
+(add-to-list 'ido-ignore-buffers "magit-*")
+(add-to-list 'ido-ignore-buffers "^[tT][aA][gG][sS]$")

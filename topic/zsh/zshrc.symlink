@@ -51,6 +51,9 @@ antigen apply
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 
+# Add gnu coreutils to path without 'g' prefix
+export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+
 # Init gvm
 [[ -s "/Users/michaelbrown/.gvm/scripts/gvm" ]] && source "/Users/michaelbrown/.gvm/scripts/gvm"
 
@@ -61,5 +64,22 @@ export EDITOR=emacs
 
 
 # Alias kitchen shortcuts
-alias kdc="kitchen destroy -c && kitchen converge -c"
-alias kc="kitchen converge -c"
+alias kdc="kitchen destroy -c 4 && kitchen converge -c 4"
+alias kc="kitchen converge -c 4"
+
+# Alias SSH for AWS Hosts
+alias ssk="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
+alias bas="ssk -A fedramp.bastion.socrata.net"
+
+# Set up virtualenv for python
+export WORKON_HOME=/Users/michaelbrown/.virtualenvs
+source /usr/local/bin/virtualenvwrapper.sh
+
+# JAVA
+alias setJdk6='export JAVA_HOME=$(/usr/libexec/java_home -v 1.6)'
+alias setJdk7='export JAVA_HOME=$(/usr/libexec/java_home -v 1.7)'
+alias setJdk8='export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)'
+export PATH="/usr/local/sbin:$PATH"
+
+# Proxy fun
+alias bastion-proxy='ssh -D 26499 -f -C -q -N fedramp.bastion.socrata.net'

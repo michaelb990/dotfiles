@@ -82,3 +82,5 @@ alias bastion-proxy='ssh -D 26499 -f -C -q -N fedramp.bastion.socrata.net'
 export PATH="$HOME/dotfiles/bin:$PATH"
 export EDITOR=~/dotfiles/bin/edit
 alias emacs=edit
+
+export DEV_DIR="$HOME/Developer/Socrata"

@@ -1,0 +1,45 @@
+# ~/.tmuxinator/socrata.yml
+
+name: socrata
+root: ~/Developer/Socrata
+
+# Optional tmux socket
+# socket_name: foo
+
+# Runs before everything. Use it to start daemons etc.
+# pre: sudo /etc/rc.d/mysqld start
+
+# Runs in each window and pane before window/pane specific commands. Useful for setting up interpreter versions.
+# pre_window: rbenv shell 2.0.0-p247
+
+# Pass command line options to tmux. Useful for specifying a different tmux.conf.
+# tmux_options: -f ~/.tmux.mac.conf
+
+# Change the command to call tmux.  This can be used by derivatives/wrappers like byobu.
+# tmux_command: byobu
+
+# Specifies (by name or index) which window will be selected on project startup. If not set, the first window is used.
+# startup_window: logs
+
+# Controls whether the tmux session should be attached to automatically. Defaults to true.
+# attach: false
+
+# Runs after everything. Use it to attach to tmux with custom options etc.
+# post: tmux -CC attach -t socrata
+
+pre: export DISABLE_AUTO_TITLE=true
+
+windows:
+  - core: bash -c "cd core && sbt 'core-http/run serve'"
+  - freezer: cd core && sbt 'freezer/run /tmp/freezer Imports tcp://127.0.0.1:61616'
+  - frontend:
+      layout: main-horizontal
+      panes:
+        - cd frontend && bin/start_frontend.sh
+        - cd feature-flag-signaller && bin/start_signaller.sh
+        - cd frontend && bin/start_dev_server.sh
+  - iss:
+      layout: main-horizontal
+      panes:
+        - cd import-status-service && bin/start_iss_http.sh
+        - cd import-status-service && bin/start_iss_consumer.sh

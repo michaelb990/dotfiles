@@ -10,7 +10,7 @@ require 'erb'
 desc "install the dot files into user's home directory"
 task :install do
   replace_all = false
-  Dir['topic/**/*'].each do |file|
+  Dir['topic/*/*'].each do |file|
     next unless file =~ /symlink/
     
     filename = File.basename(file).sub('.symlink', '').sub('.erb', '')

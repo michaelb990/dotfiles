@@ -1,24 +1,57 @@
-Dotfiles
-=======
-a collection of dotfiles that I have found useful.
+dotfiles
+=================
 
-### How this works
-* cd into the dotfiles repo
-* `rake install` will trigger an install
-* the install task will link any files found in topic/\*\*/\*.symlink to dotfiles in the home directory
-    - ex: my zshrc file is stored in topic/zsh/zshrc.symlink. the script will create a link in my home directory ~/.zshrc => ~/dotfiles/topic/zsh/zshrc.symlink
+## setup
 
-### Topics
-* i'm using topics to break up configuration files by topic. zsh-related files go into topic/zsh/ while vim-related ones go to topic/vim/
-* topic directories typically have a few common files
-    - \*.symlink: a dotfile to link to from the $HOME directory
-    - \*.zsh: a script file that will be executed by the zshrc startup script
-    - install.sh: a shell to install packages and dependencies related to the topic
+### homebrew
 
-### Good examples to keep an eye on
-* cdzombak/dotfiles
-* holman/dotfiles
-* ryanb/dotfiles
-* http://justinlilly.com/dotfiles/zsh.html
-* howardabrams/dot-files, esp for the [emacs config](https://github.com/howardabrams/dot-files/blob/master/emacs.org)
-* ... will add more as I find them.
+Install:
+* https://docs.brew.sh/Installation
+
+```
+mkdir homebrew && curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C homebrew
+
+eval "$(homebrew/bin/brew shellenv)"
+brew update --force --quiet
+chmod -R go-w "$(brew --prefix)/share/zsh"
+```
+
+### zsh / terminal
+
+Install:
+* iterm
+* https://ohmyz.sh/
+* https://github.com/romkatv/powerlevel10k#homebrew
+* https://github.com/altercation/solarized
+
+```
+# install oh-my-zsh
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+# install theme
+brew install romkatv/powerlevel10k/powerlevel10k
+echo "source $(brew --prefix)/opt/powerlevel10k/powerlevel10k.zsh-theme" >>~/.zshrc
+
+# download solarized
+git clone https://github.com/altercation/solarized ~/setup/solarized
+```
+
+* import the solarized color schemes into iterm
+* go to preferences > profile > keys > key mappings. select "Natural text editing" preset.
+
+### emacs
+
+Install:
+* https://github.com/d12frosted/homebrew-emacs-plus#install
+* https://prelude.emacsredux.com/en/latest/installation/
+
+emacs:
+```
+brew tap d12frosted/emacs-plus
+brew install emacs-plus
+```
+
+prelude:
+```
+curl -L https://github.com/bbatsov/prelude/raw/master/utils/installer.sh | sh
+```
